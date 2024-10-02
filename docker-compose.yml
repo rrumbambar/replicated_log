@@ -1,0 +1,27 @@
+version: '3'
+services:
+  master:
+    build:
+      context: .
+      dockerfile: Dockerfile.master
+    ports:
+      - "5000:5000"
+    depends_on:
+      - secondary-a
+      - secondary-b
+
+  secondary-a:
+    build:
+      context: .
+      dockerfile: Dockerfile.secondary
+    ports:
+      - "5001:5001"
+
+  secondary-b:
+    build:
+      context: .
+      dockerfile: Dockerfile.secondary
+    ports:
+      - "5002:5001"
+
+
