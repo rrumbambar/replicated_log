@@ -20,6 +20,6 @@ Secondary can:
 
 ## How to test
 
-1. send message to master `curl -X POST -H "Content-Type: application/json" -d '{"message": "message_1"}' http://localhost:5000/messages`
+1. send message to master `curl -X POST -H "Content-Type: application/json" -d '{"message": "message_1", "write_concern": 2}' http://localhost:5000/messages`
 2. get message from master `curl http://localhost:5000/messages`
 3. get message from secondaries `curl http://localhost:5001/messages`, `curl http://localhost:5002/messages`
