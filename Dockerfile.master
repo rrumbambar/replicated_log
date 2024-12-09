@@ -3,4 +3,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 COPY master.py .
+COPY model.py .
+
 CMD ["python", "master.py"]

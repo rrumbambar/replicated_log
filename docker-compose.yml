@@ -6,9 +6,6 @@ services:
       dockerfile: Dockerfile.master
     ports:
       - "5000:5000"
-    depends_on:
-      - secondary-a
-      - secondary-b
 
   secondary-a:
     build:
@@ -16,12 +13,16 @@ services:
       dockerfile: Dockerfile.secondary
     ports:
       - "5001:5001"
-    environment:
-      - DELAY_IN_MS=30000
-
+    # environment:
+    #   - FAILURE=True
+    #   - DELAY_IN_MS=1000
+    depends_on:
+      - master
   secondary-b:
     build:
       context: .
       dockerfile: Dockerfile.secondary
     ports:
       - "5002:5001"
+    depends_on:
+      - master
